@@ -1,0 +1,52 @@
+* {
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+    outline: none;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+body {
+    background-color: rgb(20, 19, 19);
+}
+
+.header-title {
+    text-align: center;
+    font-weight: 300;
+    color: rgb(227, 144, 37);
+    margin: 2.8rem 0 5rem 0;
+}
+
+.main-list {
+    width: 90%;
+    margin: auto;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+}
+
+.list-inputs {
+    #tasks {
+        padding: .8em;
+        width: 32vw;
+    }
+
+    #submit-button {
+        padding: .5em;
+        margin-top: .3em;
+    }
+}
+
+.list-outputs {
+    background-color: white;
+    padding: 0.2em .7em;
+
+    div {
+        display: flex;
+        flex-flow: column wrap;
+    }
+}
+
+.eraser {
+    margin-left: .6em;
+}
