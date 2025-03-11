@@ -11,13 +11,12 @@
 .header {
     background-color: rgb(227, 144, 37);
     padding: 3vw 0;
-    margin-bottom: 2vw;
-    border: 10px ridge rgb(0, 0, 0);
-    transition: 2s;
+    border: 5px ridge rgb(0, 0, 0);
+    transition: 1.5s;
 
     &:hover {
         background-color: rgb(2, 117, 125);
-        transition: background-color 2s ease-in-out;
+        transition: background-color 1.5s ease-in-out;
     }
 }
 
@@ -30,15 +29,14 @@
     text-align: center;
     text-shadow: -1vh 0 0 white;
     line-height: 1;
-    transform: scale3d(20deg);
 }
 
 .main-list {
-    width: 90%;
-    margin: auto;
+    width: 95%;
     display: flex;
     flex-flow: row wrap;
     justify-content: space-between;
+    margin: 5vw auto;
 }
 
 .list-inputs {
@@ -65,4 +63,23 @@
 
 .eraser {
     margin-left: .6em;
+}
+
+.footer {
+    background-color: rgb(227, 144, 37);
+    border: 5px ridge rgb(0, 0, 0);
+    text-align: center;
+    padding: 2.3vw 0;
+    transition: 1.5s;
+
+    &:hover {
+        color: white;
+        background-color: rgb(2, 117, 125);
+        transition: background-color color 1.5s ease-in-out;
+    }
+}
+
+.footer-copyright {
+    font-size: 2.5vh;
+    font-weight: bold;
 }
