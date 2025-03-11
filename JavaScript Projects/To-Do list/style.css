@@ -11,17 +11,19 @@
 .header {
     background-color: rgb(227, 144, 37);
     padding: 3vw 0;
+    border: 10px ridge rgb(0, 0, 0);
 }
 
 .header-title {
     color: rgb(0, 0, 0);
     text-transform: uppercase;
     letter-spacing: -.1vw;
-    font-size: 12vh;
+    font-size: 10vh;
     font-weight: 900;
     text-align: center;
     text-shadow: -1vh 0 0 white;
     line-height: 1;
+    transform: scale3d(20deg);
 }
 
 .main-list {
