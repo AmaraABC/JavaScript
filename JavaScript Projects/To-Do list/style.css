@@ -8,18 +8,20 @@
 }
 
 /* Stylisation de l'en-tête de page */
-.header-title {
+.header {
     background-color: rgb(227, 144, 37);
     padding: 3vw 0;
+}
 
-    h1 {
-        color: rgb(0, 0, 0);
-        text-transform: uppercase;
-        letter-spacing: .7vw;
-        font-size: 8vh;
-        font-weight: bold;
-        text-align: center;
-    }
+.header-title {
+    color: rgb(0, 0, 0);
+    text-transform: uppercase;
+    letter-spacing: -.1vw;
+    font-size: 12vh;
+    font-weight: 900;
+    text-align: center;
+    text-shadow: -1vh 0 0 white;
+    line-height: 1;
 }
 
 .main-list {
