@@ -20,7 +20,7 @@ function addTasks() {
     else {
         const newTask = document.createElement("span");
         newTask.classList.add("active-tasks");
-        newTask.innerHTML = newInput.value + " - " + myDate;
+        newTask.innerHTML = newInput.value + ` - Tâche ajoutée le ${myDate}`;
         newOutput.appendChild(newTask);
         const newButton = document.createElement("button");
         newButton.innerHTML = "<button style='padding: .3em;'>Supprimer</button>";
