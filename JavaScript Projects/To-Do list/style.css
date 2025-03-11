@@ -11,7 +11,14 @@
 .header {
     background-color: rgb(227, 144, 37);
     padding: 3vw 0;
+    margin-bottom: 2vw;
     border: 10px ridge rgb(0, 0, 0);
+    transition: 2s;
+
+    &:hover {
+        background-color: rgb(2, 117, 125);
+        transition: background-color 2s ease-in-out;
+    }
 }
 
 .header-title {
