@@ -9,18 +9,25 @@
     <title>To-Do List - JavaScript</title>
 </head>
 <body>
-    <header class="header-title">
-        <h1>To-Do List</h1>
+    <header class="header">
+        <h1 class="header-title">To-Do List</h1>
     </header>
     <main class="main-list">
         <section class="list-inputs">
-            <input placeholder="Entrez votre tâche ici.." id="tasks" name="tasks">
+            <label for="task" hidden>Intitulé de la tâche</label>
+            <input type="text" id="task" placeholder="Intitulé" maxlength="50" minlength="1">
             <br>
-            <button onclick="addTasks()" id="submit-button">Soumettre</button>
+            <label for="" hidden>Commentaires</label>
+            <textarea placeholder="Commentaires.." id="" name="" maxlength="200" rows="7"></textarea>
+            <br>
+            <button onclick="addTasks()" id="submit-button">Ajouter</button>
         </section>
         <section class="list-outputs">
             <div id="tasks-output"></div>
         </section>
     </main>
+    <footer class="footer">
+        <p class="footer-copyright">&copy;To-do list - 2024</p>
+    </footer>
 </body>
 </html>
