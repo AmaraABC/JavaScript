@@ -24,13 +24,14 @@
     color: rgb(0, 0, 0);
     text-transform: uppercase;
     letter-spacing: -.1vw;
-    font-size: 10vh;
+    font-size: 9vh;
     font-weight: 900;
     text-align: center;
     text-shadow: -1vh 0 0 white;
     line-height: 1;
 }
 
+/* Stylisation de la section concernant l'ajout des tâches */
 .main-list {
     width: 95%;
     display: flex;
@@ -40,9 +41,17 @@
 }
 
 .list-inputs {
-    #tasks {
-        padding: .8em;
+    input {
+        padding: 1.5vh;
         width: 32vw;
+        min-width: 200px;
+        margin-bottom: .5em;
+    }
+
+    textarea {
+        padding: .6em 0 0 .5em;
+        width: 400px;
+        max-width: 300px;
     }
 
     #submit-button {
@@ -51,6 +60,7 @@
     }
 }
 
+/* Stylisation de la section qui affiche les tâches */
 .list-outputs {
     background-color: white;
     padding: 0.2em .7em;
@@ -65,6 +75,7 @@
     margin-left: .6em;
 }
 
+/* Pied de page */
 .footer {
     background-color: rgb(227, 144, 37);
     border: 5px ridge rgb(0, 0, 0);
