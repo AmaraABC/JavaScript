@@ -74,7 +74,6 @@ function addTasks() {
 
         output.appendChild(mainArticle);
         deleteTask(mainArticle);
-        EditTask(mainArticle);
         newIntForId();
     }
 }
@@ -103,29 +102,3 @@ function deleteTask(mainArticle) {
 
     mainArticle.appendChild(deleteButton);
 };
-
-// Fonction pour éditer une tâche
-function EditTask(mainArticle) {
-    // Bouton pour éditer une tâche
-    const editButton = document.createElement('button');
-    editButton.classList.add("task-editor");
-    editButton.setAttribute("type", "button");
-    editButton.innerText = "Editer";
-    editButton.style.padding = '.15em .5em';
-    editButton.style.fontSize = '2vh';
-
-    editButton.addEventListener('click', () => {});
-
-    mainArticle.appendChild(editButton);
-}
-
-/*editButton.addEventListener('click', () => {
-    button.innerText = "Appliquer les changements";
-    button.addEventListener('click', () => {
-        if ((input.value != intitule.innerText) || (comments.value != description.innerText.slice(13))) {
-
-        } else {
-
-        }
-    });
-});*/

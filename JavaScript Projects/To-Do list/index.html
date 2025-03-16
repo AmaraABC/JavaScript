@@ -19,9 +19,12 @@
             <textarea placeholder="Commentaires.." id="comments" maxlength="200" rows="7"></textarea>
             <br>
             <button onclick="addTasks()" id="submit-button">Ajouter</button>
+            <button onclick="resetText()" type="reset" id="reset-button">Effacer</button>
         </section>
         <section class="list-outputs">
-            <div id="tasks-output"></div>
+            <div id="tasks-output">
+                <p class="task-list">Liste des tâches :</p>
+            </div>
         </section>
     </main>
     <footer class="footer">
