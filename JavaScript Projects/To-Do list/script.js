@@ -53,7 +53,7 @@ function addTasks() {
         intitule.classList.add("task-name");
         intitule.setAttribute("for", `task-check-${idIncrement}`);
         intitule.innerText = input.value;
-        intitule.style.marginLeft = '2vw';
+        intitule.style.marginLeft = '1vw';
         intitule.style.fontSize = '2.5vh';
         mainArticle.appendChild(intitule);
 
@@ -73,7 +73,9 @@ function addTasks() {
         mainArticle.appendChild(dateAjout);
 
         output.appendChild(mainArticle);
+        resetText();
         deleteTask(mainArticle);
+        editTask(mainArticle, intitule, description);
         newIntForId();
     }
 }
@@ -84,6 +86,33 @@ function resetText() {
     comments.value = '';
     return input.value, comments.value;
 };
+
+// Fonction pour editer une tâche enregistrée
+function editTask(mainArticle, intitule, description) {
+    // Création du bouton pour supprimer une tâche
+    const editButton = document.createElement('button');
+    editButton.classList.add("edit-task");
+    editButton.setAttribute("type", "button");
+    editButton.innerText = "Editer";
+    editButton.style.padding = '.15em .5em';
+    editButton.style.margin = '.3vw 4px 0 0';
+    editButton.style.fontSize = '2vh';
+
+    editButton.addEventListener('click', () => {
+        button.onclick = () => {
+            mainArticle.remove();
+            addTasks();
+        };
+        input.value = intitule.innerText;
+        if (description.value != "") {
+            comments.value = description.innerText.slice(13);
+            return comments.value;
+        };
+        return input.value;
+    });
+    
+    mainArticle.appendChild(editButton);
+}
 
 // Fonction pour supprimer une tâche
 function deleteTask(mainArticle) {
