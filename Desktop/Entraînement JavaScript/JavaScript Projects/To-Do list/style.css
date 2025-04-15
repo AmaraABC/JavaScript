@@ -3,50 +3,91 @@
     margin: 0;
     text-decoration: none;
     outline: none;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: Verdana;
+    box-sizing: border-box;
 }
 
-body {
-    background-color: rgb(20, 19, 19);
+/* Stylisation de l'en-tête de page */
+.header {
+    background-color: rgb(227, 144, 37);
+    padding: 3vw 0;
+    border: 5px ridge rgb(0, 0, 0);
+    transition: 1.5s;
+
+    &:hover {
+        background-color: rgb(2, 117, 125);
+        transition: background-color 1.5s ease-in-out;
+    }
 }
 
 .header-title {
+    color: rgb(0, 0, 0);
+    text-transform: uppercase;
+    letter-spacing: -.1vw;
+    font-size: 9vh;
+    font-weight: 900;
     text-align: center;
-    font-weight: 300;
-    color: rgb(227, 144, 37);
-    margin: 2.8rem 0 5rem 0;
+    text-shadow: -1vh 0 0 white;
+    line-height: 1;
 }
 
+/* Stylisation de la section concernant l'ajout des tâches */
 .main-list {
-    width: 90%;
-    margin: auto;
+    width: 95%;
     display: flex;
     flex-flow: row wrap;
     justify-content: space-between;
+    margin: 5vw auto;
 }
 
 .list-inputs {
-    #tasks {
-        padding: .8em;
-        width: 32vw;
+    padding-bottom: 5vw;
+
+    input {
+        padding: 1.5vh;
+        width: 35vw;
+        min-width: 200px;
+        margin-bottom: .5em;
     }
 
-    #submit-button {
-        padding: .5em;
+    textarea {
+        padding: .6em .5em;
+        width: 420px;
+        max-width: 300px;
+    }
+
+    #submit-button, #reset-button {
+        padding: .8em 1em;
         margin-top: .3em;
     }
 }
 
+/* Stylisation de la section qui affiche les tâches */
 .list-outputs {
     background-color: white;
-    padding: 0.2em .7em;
+}
 
-    div {
-        display: flex;
-        flex-flow: column wrap;
+.task-list {
+    padding-bottom: 1vw;
+    font-size: 2.5vh;
+}
+
+/* Pied de page */
+.footer {
+    background-color: rgb(227, 144, 37);
+    border: 5px ridge rgb(0, 0, 0);
+    text-align: center;
+    padding: 2.3vw 0;
+    transition: 1.5s;
+
+    &:hover {
+        color: white;
+        background-color: rgb(2, 117, 125);
+        transition: background-color color 1.5s ease-in-out;
     }
 }
 
-.eraser {
-    margin-left: .6em;
+.footer-copyright {
+    font-size: 2.5vh;
+    font-weight: bold;
 }
