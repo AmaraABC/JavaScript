@@ -10,8 +10,8 @@
 /* Stylisation de l'en-tête de page */
 .header {
     background-color: rgb(227, 144, 37);
-    padding: 3vw 0;
-    border: 5px ridge rgb(0, 0, 0);
+    padding: 2.3vw 0;
+    border: 4px ridge rgb(0, 0, 0);
     transition: 1.5s;
 
     &:hover {
@@ -34,32 +34,45 @@
 /* Stylisation de la section concernant l'ajout des tâches */
 .main-list {
     width: 95%;
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: space-between;
     margin: 5vw auto;
 }
 
 .list-inputs {
-    padding-bottom: 5vw;
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
 
     input {
         padding: 1.5vh;
-        width: 35vw;
+        width: 70%;
         min-width: 200px;
         margin-bottom: .5em;
+        border: 2px rgb(36, 35, 35) dashed;
     }
 
     textarea {
         padding: .6em .5em;
-        width: 420px;
-        max-width: 300px;
+        width: 70%;
+        min-width: 200px;
+        border: 2px rgb(36, 35, 35) dashed;
     }
+}
 
-    #submit-button, #reset-button {
+.main-buttons {
+    width: 100%;
+    display: inline-flex;
+    justify-content: center;
+
+    #submit-button,
+    #reset-button {
         padding: .8em 1em;
-        margin-top: .3em;
     }
+}
+
+/* Stylisation de la balise <hr> - Séparateur */
+.section-delimiter {
+    border: .5px rgb(36, 35, 35) dashed;
+    margin: 2rem 0;
 }
 
 /* Stylisation de la section qui affiche les tâches */
@@ -68,14 +81,14 @@
 }
 
 .task-list {
-    padding-bottom: 1vw;
-    font-size: 2.5vh;
+    font-size: 2.2vh;
+    text-align: center;
 }
 
 /* Pied de page */
 .footer {
     background-color: rgb(227, 144, 37);
-    border: 5px ridge rgb(0, 0, 0);
+    border: 4px ridge rgb(0, 0, 0);
     text-align: center;
     padding: 2.3vw 0;
     transition: 1.5s;
