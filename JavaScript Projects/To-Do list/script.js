@@ -30,6 +30,30 @@ function newIntForId() {
     return idIncrement++;
 }
 
+// Définition d'une div (container) qui comportera chaque tâche
+const mainContainer = document.createElement('div');
+mainContainer.classList.add(".tasks-box");
+mainContainer.style.backgroundColor = "white";
+mainContainer.style.display = "grid";
+mainContainer.style.gridTemplateColumns = "repeat(3, .5fr)"
+mainContainer.style.rowGap = "2rem"
+mainContainer.style.justifyItems = "center"
+output.appendChild(mainContainer);
+
+// Responsive et media queries
+window.addEventListener('resize', () => {
+    const responsive = window.matchMedia("(max-width: 615px)");
+    if (!responsive.matches) {
+        mainContainer.style.gridTemplateColumns = "repeat(3, .5fr)"
+        mainContainer.style.rowGap = "2rem"
+    }
+
+    else if (responsive.matches) {
+        mainContainer.style.gridTemplateColumns = "repeat(2, 1fr)";
+        mainContainer.style.rowGap = "1rem"
+    }
+});
+
 // Fonction pour l'ajout d'une nouvelle tâche
 function addTasks() {
     if (input.value == '') {
@@ -70,15 +94,23 @@ function addTasks() {
         dateAjout.classList.add("task-date");
         dateAjout.innerText = displayDateTime();
         dateAjout.style.fontSize = '2vh';
+        dateAjout.style.margin = ".5rem 0";
         mainArticle.appendChild(dateAjout);
 
-        output.appendChild(mainArticle);
+        mainArticle.style.padding = ".9em";
+        mainArticle.style.border = "3px groove rgb(2, 117, 125)";
+        mainArticle.style.borderRadius = "6px";
+        mainArticle.style.boxShadow = "9px 9px rgb(227, 144, 37)";
+        mainArticle.style.width = "25vw";
+        mainArticle.style.minWidth = "140px";
+
+        mainContainer.appendChild(mainArticle);
         resetText();
         deleteTask(mainArticle);
         editTask(mainArticle, intitule, description);
         newIntForId();
     }
-}
+};
 
 // Fonction pour effecer les champs renseignés dans l'intitulé et les commentaires
 function resetText() {
@@ -110,9 +142,9 @@ function editTask(mainArticle, intitule, description) {
         };
         return input.value;
     });
-    
+
     mainArticle.appendChild(editButton);
-}
+};
 
 // Fonction pour supprimer une tâche
 function deleteTask(mainArticle) {
