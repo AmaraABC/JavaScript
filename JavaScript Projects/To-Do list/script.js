@@ -98,7 +98,7 @@ function addTasks() {
         mainArticle.appendChild(dateAjout);
 
         mainArticle.style.padding = ".9em";
-        mainArticle.style.border = "3px groove rgb(2, 117, 125)";
+        mainArticle.style.border = "3px dashed rgb(2, 117, 125)";
         mainArticle.style.borderRadius = "6px";
         mainArticle.style.boxShadow = "9px 9px rgb(227, 144, 37)";
         mainArticle.style.width = "25vw";
