@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr-FR" dir="ltr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,31 +9,29 @@
     <script src="script.js" defer></script>
     <title>To-Do List - JavaScript</title>
 </head>
+
 <body>
     <header class="header">
         <h1 class="header-title">To-Do List</h1>
     </header>
     <main class="main-list">
-        <section class="list-inputs">
-            <input type="text" id="task" placeholder="Intitulé" maxlength="50" minlength="1">
-            <br>
-            <textarea placeholder="Commentaires.." id="comments" maxlength="200" rows="7"></textarea>
-            <br>
-            <div class="main-buttons">
+        <section class="task-input">
+            <input type="text" id="task" placeholder="Une tâche à ajouter aujourd'hui ?" maxlength="50" minlength="1">
+
+            <div class="task-input-buttons">
                 <button onclick="addTasks()" id="submit-button">Ajouter</button>
                 &nbsp; &nbsp;
                 <button onclick="resetText()" type="reset" id="reset-button">Effacer</button>
             </div>
         </section>
         <hr class="section-delimiter">
-        <section class="list-outputs">
-            <div id="tasks-output">
-                <p class="task-list">Liste des tâches :</p>
-            </div>
+        <section class="list-output">
+            <div id="task-output"></div>
         </section>
     </main>
     <footer class="footer">
-        <p class="footer-copyright">&copy;To-do list - 2024</p>
+        <p class="footer-copyright">&copy;Amâra-Noah G. - 2024 | To-do list</p>
     </footer>
 </body>
+
 </html>
