@@ -1,165 +1,190 @@
-// 3 constantes pour représenter l'intitulé de la tâche, son résumé et son ajout
-const input = document.getElementById("task");
-const comments = document.getElementById("comments");
-const output = document.getElementById("tasks-output");
-const button = document.getElementById("submit-button");
+// Tableau pour le stockage des tâches
+let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
 
-// Définition de la date et du temps
+// Définition de la date et du temps où la tâche a été ajoutée
 function displayDateTime() {
     const actualDate = new Date();
     const myDate = actualDate.toLocaleString('fr-FR', {
-        weekday: 'short',
+        weekday: 'long',
         day: 'numeric',
-        month: '2-digit',
+        month: 'long',
         year: 'numeric'
     });
 
     const myTime = actualDate.toLocaleString('fr-FR', {
         hour: 'numeric',
-        minute: 'numeric',
-        second: 'numeric'
+        minute: 'numeric'
     });
 
-    return `Date de création : ${myDate}, à ${myTime}`
+    return `Le ${myDate} à ${myTime}`;
+};
+
+// Fonction pour effecer les champs renseignés dans l'intitulé
+function resetText() {
+    const input = document.getElementById("task");
+    input.value = '';
+    return input.value;
+};
+
+// Fonction pour l'affichage de chaque tâche sous forme de liste
+function displayTasks() {
+    const taskList = document.getElementById('task-output');
+    taskList.innerHTML = '';
+    tasks.forEach((task, index) => {
+        // Création d'une div et d'une classe pour la tâche
+        const taskDiv = document.createElement('div');
+        taskDiv.style.marginBottom = "1vw";
+        // Ajout de styles pour la div
+        taskDiv.style.padding = ".9em";
+        taskDiv.style.backgroundColor = "white";
+        taskDiv.style.border = "2px dashed rgb(2, 117, 125)";
+        taskDiv.style.borderRadius = "6px";
+        taskDiv.style.boxShadow = "9px 9px rgb(245, 165, 60)";
+        taskDiv.style.width = "25vw";
+        taskDiv.style.minWidth = "140px";
+
+        // Création des éléments de la tâche
+        const taskName = document.createElement('p'); // Nom de la tâche
+        taskName.textContent = task.name;
+        taskName.contentEditable = false;
+        // Stylisation
+        taskName.style.fontSize = '2.5vh';
+
+        const taskPublication = document.createElement('p'); // Date de publication de la tâche
+        taskPublication.textContent = task.date;
+        // Stylisation
+        taskPublication.style.marginBlock = '.75vw';
+        taskPublication.style.fontSize = '2vh';
+
+        // Création du bouton "Supprimer"
+        const deleteButton = document.createElement('button');
+        deleteButton.textContent = "Supprimer";
+        deleteButton.onclick = () => deleteTask(index);
+        deleteButton.style.padding = ".25rem";
+        deleteButton.style.marginRight = ".5rem";
+
+        // Création du bouton "Modifier"
+        const editButton = document.createElement('button');
+        editButton.textContent = "Modifier";
+        editButton.onclick = () => editTask(index, taskName);
+        editButton.style.padding = ".25rem";
+        editButton.style.marginRight = ".5rem";
+
+        // Intégration de tous ces éléments à la div
+        taskDiv.appendChild(taskName);
+        taskDiv.appendChild(taskPublication);
+        taskDiv.appendChild(editButton);
+        taskDiv.appendChild(deleteButton);
+
+        // Intégration de la div à la liste de tâche
+        taskList.appendChild(taskDiv);
+    });
 }
-
-// Fonction d'incrémentation pour différencier les identifiants de chaque tâche
-let idIncrement = 1;
-
-function newIntForId() {
-    return idIncrement++;
-}
-
-// Définition d'une div (container) qui comportera chaque tâche
-const mainContainer = document.createElement('div');
-mainContainer.classList.add(".tasks-box");
-mainContainer.style.backgroundColor = "white";
-mainContainer.style.display = "grid";
-mainContainer.style.gridTemplateColumns = "repeat(3, .5fr)"
-mainContainer.style.rowGap = "2rem"
-mainContainer.style.justifyItems = "center"
-output.appendChild(mainContainer);
-
-// Responsive et media queries
-window.addEventListener('resize', () => {
-    const responsive = window.matchMedia("(max-width: 615px)");
-    if (!responsive.matches) {
-        mainContainer.style.gridTemplateColumns = "repeat(3, .5fr)"
-        mainContainer.style.rowGap = "2rem"
-    }
-
-    else if (responsive.matches) {
-        mainContainer.style.gridTemplateColumns = "repeat(2, 1fr)";
-        mainContainer.style.rowGap = "1rem"
-    }
-});
 
 // Fonction pour l'ajout d'une nouvelle tâche
 function addTasks() {
-    if (input.value == '') {
-        alert("Vous devez au moins écrire quelque chose dans l'intitulé...");
-    }
+    const taskInput = document.getElementById('task');
+    const task = taskInput.value.trim();
 
-    else {
-        // Définition d'une div et de sa classe
-        const mainArticle = document.createElement('div');
-        mainArticle.style.marginBottom = "1vw";
-        mainArticle.classList.add("active-tasks");
-
-        // Ajout de la tâche saisie auparavant
-        const checkbox = document.createElement('input');
-        checkbox.setAttribute("id", `task-check-${idIncrement}`);
-        checkbox.setAttribute("name", `task-check-${idIncrement}`);
-        checkbox.setAttribute("type", "checkbox");
-        mainArticle.appendChild(checkbox);
-
-        const intitule = document.createElement('label');
-        intitule.classList.add("task-name");
-        intitule.setAttribute("for", `task-check-${idIncrement}`);
-        intitule.innerText = input.value;
-        intitule.style.marginLeft = '1vw';
-        intitule.style.fontSize = '2.5vh';
-        mainArticle.appendChild(intitule);
-
-        const description = document.createElement('p');
-        description.classList.add("task-description");
-        description.innerText = 'Description: ' + comments.value;
-        description.style.fontSize = '2vh';
-        description.style.margin = '.5vw 0';
-        if (comments.value) {
-            mainArticle.appendChild(description);
-        }
-
-        const dateAjout = document.createElement('p');
-        dateAjout.classList.add("task-date");
-        dateAjout.innerText = displayDateTime();
-        dateAjout.style.fontSize = '2vh';
-        dateAjout.style.margin = ".5rem 0";
-        mainArticle.appendChild(dateAjout);
-
-        mainArticle.style.padding = ".9em";
-        mainArticle.style.border = "3px dashed rgb(2, 117, 125)";
-        mainArticle.style.borderRadius = "6px";
-        mainArticle.style.boxShadow = "9px 9px rgb(227, 144, 37)";
-        mainArticle.style.width = "25vw";
-        mainArticle.style.minWidth = "140px";
-
-        mainContainer.appendChild(mainArticle);
-        resetText();
-        deleteTask(mainArticle);
-        editTask(mainArticle, intitule, description);
-        newIntForId();
-    }
-};
-
-// Fonction pour effecer les champs renseignés dans l'intitulé et les commentaires
-function resetText() {
-    input.value = '';
-    comments.value = '';
-    return input.value, comments.value;
-};
-
-// Fonction pour editer une tâche enregistrée
-function editTask(mainArticle, intitule, description) {
-    // Création du bouton pour supprimer une tâche
-    const editButton = document.createElement('button');
-    editButton.classList.add("edit-task");
-    editButton.setAttribute("type", "button");
-    editButton.innerText = "Editer";
-    editButton.style.padding = '.15em .5em';
-    editButton.style.margin = '.3vw 4px 0 0';
-    editButton.style.fontSize = '2vh';
-
-    editButton.addEventListener('click', () => {
-        button.onclick = () => {
-            mainArticle.remove();
-            addTasks();
+    if (task !== '') {
+        const newTask = {
+            name: task,
+            date: displayDateTime(),
         };
-        input.value = intitule.innerText;
-        if (description.value != "") {
-            comments.value = description.innerText.slice(13);
-            return comments.value;
-        };
-        return input.value;
-    });
-
-    mainArticle.appendChild(editButton);
+        tasks.push(newTask);
+        taskInput.value = '';
+        saveTasks();
+        displayTasks();
+    } else {
+        alert("Vous devez au moins écrire quelque chose...");
+    };
 };
 
 // Fonction pour supprimer une tâche
-function deleteTask(mainArticle) {
-    // Création du bouton pour supprimer une tâche
-    const deleteButton = document.createElement('button');
-    deleteButton.classList.add("delete-task");
-    deleteButton.setAttribute("type", "button");
-    deleteButton.innerText = "Supprimer";
-    deleteButton.style.padding = '.15em .5em';
-    deleteButton.style.margin = '.3vw 4px 0 0';
-    deleteButton.style.fontSize = '2vh';
-
-    deleteButton.addEventListener('click', () => {
-        mainArticle.remove();
-    });
-
-    mainArticle.appendChild(deleteButton);
+function deleteTask(index) {
+    tasks.splice(index, 1);
+    saveTasks();
+    displayTasks();
 };
+
+// Fonction pour editer une tâche enregistrée
+function editTask(index, taskName) {
+    taskName.contentEditable = true;
+    taskName.focus();
+
+    const existingButtons = taskName.parentElement.querySelectorAll('.edit-buttons');
+    if (existingButtons.length > 0) {
+        return;
+    }
+
+    // Création du bouton "Sauvegarder"
+    const saveButton = document.createElement('button');
+    saveButton.textContent = "Sauvegarder";
+    saveButton.onclick = () => saveEditedTask(index, taskName, saveButton);
+    saveButton.style.marginRight = ".5rem";
+    saveButton.style.padding = ".25rem";
+    saveButton.classList.add('edit-buttons');
+
+    // Création du bouton "Annuler"
+    const cancelButton = document.createElement('button');
+    cancelButton.textContent = "Annuler";
+    cancelButton.onclick = () => cancelEdit(index, taskName, saveButton, cancelButton);
+    cancelButton.style.padding = ".25rem";
+    cancelButton.style.marginTop = ".5rem";
+    cancelButton.classList.add('edit-buttons');
+
+    // Intégration de ces boutons à la tâche
+    taskName.parentElement.appendChild(saveButton);
+    taskName.parentElement.appendChild(cancelButton);
+};
+
+// Fonction pour sauvegarder les modifications de la tâche
+function saveEditedTask(index, taskName, saveButton) {
+    const updatedText = taskName.textContent.trim();
+    if (updatedText === tasks[index].name) {
+        alert("Aucune modification n'a été effectuée. Le nom de la tâche reste inchangé.");
+        taskName.contentEditable = false;
+        saveButton.remove();
+        taskName.parentElement.querySelector('button').remove();
+        return;
+    }
+
+    tasks[index].name = taskName.textContent;
+    tasks[index].date = displayDateTime() + ' (modifiée)';
+    saveTasks();
+    taskName.contentEditable = false;
+    saveButton.remove();
+    taskName.parentElement.querySelector('button').remove();
+    displayTasks();
+}
+
+// Fonction pour annuler les modifications de la tâche
+function cancelEdit(index, taskName, saveButton, cancelButton) {
+    taskName.contentEditable = false;
+    saveButton.remove();
+    cancelButton.remove();
+    taskName.textContent = tasks[index].name;
+    displayTasks();
+}
+
+// Fonction pour sauvegarder les tâches dans le LocalStorage
+function saveTasks() {
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+};
+
+displayTasks();
+
+// Responsive et media queries
+window.addEventListener('resize', () => {
+    const output = document.getElementById("task-output");
+    const responsive = window.matchMedia("(max-width: 615px)");
+    if (!responsive.matches) {
+        output.style.gridTemplateColumns = "repeat(3, .5fr)"
+        output.style.rowGap = "2rem"
+    } else if (responsive.matches) {
+        output.style.gridTemplateColumns = "repeat(2, 1fr)";
+        output.style.rowGap = "1rem"
+    };
+});
+
+console.log(tasks);
