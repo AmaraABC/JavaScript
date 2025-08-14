@@ -7,59 +7,61 @@
     box-sizing: border-box;
 }
 
+html,
+body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+body {
+    /* Modification de la couleur du site */
+    background-color: rgb(248, 229, 206);
+}
+
 /* Stylisation de l'en-tête de page */
 .header {
-    background-color: rgb(227, 144, 37);
-    padding: 2.3vw 0;
-    border: 4px ridge rgb(0, 0, 0);
+    background-color: rgb(241, 205, 158);
+    padding: 1.75vw 0;
     transition: 1.5s;
-
-    &:hover {
-        background-color: rgb(2, 117, 125);
-        transition: background-color 1.5s ease-in-out;
-    }
+    border-bottom: 4px dashed chocolate;
 }
 
 .header-title {
-    color: rgb(0, 0, 0);
+    color: chocolate;
     text-transform: uppercase;
-    letter-spacing: -.1vw;
-    font-size: 9vh;
-    font-weight: 900;
-    text-align: center;
-    text-shadow: -1vh 0 0 white;
+    letter-spacing: -.15vw;
+    font-size: 7vh;
+    font-weight: lighter;
+    text-align: start;
+    text-shadow: -.55vh 0 0 rgb(2, 117, 125);
     line-height: 1;
+    margin-left: 1.25rem;
 }
 
 /* Stylisation de la section concernant l'ajout des tâches */
 .main-list {
     width: 95%;
-    margin: 5vw auto;
+    margin: 4vw auto;
+    flex: 1;
 }
 
-.list-inputs {
+.task-input {
     display: flex;
-    flex-flow: column wrap;
-    align-items: center;
+    flex-flow: row wrap;
+    justify-content: space-between;
 
     input {
         padding: 1.5vh;
-        width: 70%;
+        width: 65%;
         min-width: 200px;
-        margin-bottom: .5em;
-        border: 2px rgb(36, 35, 35) dashed;
-    }
-
-    textarea {
-        padding: .6em .5em;
-        width: 70%;
-        min-width: 200px;
-        border: 2px rgb(36, 35, 35) dashed;
+        border: 2px solid chocolate;
+        /* margin-right: 1rem; */
     }
 }
 
-.main-buttons {
-    width: 100%;
+.task-input-buttons {
     display: inline-flex;
     justify-content: center;
 
@@ -76,10 +78,6 @@
 }
 
 /* Stylisation de la section qui affiche les tâches */
-.list-outputs {
-    background-color: white;
-}
-
 .task-list {
     font-size: 2.2vh;
     text-align: center;
@@ -88,20 +86,13 @@
 
 /* Pied de page */
 .footer {
-    background-color: rgb(227, 144, 37);
-    border: 4px ridge rgb(0, 0, 0);
-    text-align: center;
-    padding: 2.3vw 0;
-    transition: 1.5s;
-
-    &:hover {
-        color: white;
-        background-color: rgb(2, 117, 125);
-        transition: background-color color 1.5s ease-in-out;
-    }
+    background-color: rgb(241, 205, 158);
+    padding: 1.5vw 0;
+    border-top: 4px dashed chocolate;
 }
 
 .footer-copyright {
     font-size: 2.5vh;
     font-weight: bold;
+    text-align: center;
 }
