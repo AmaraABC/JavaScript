@@ -1,0 +1,58 @@
+@font-face {
+    font-family: "The Rolling Stone";
+    src:
+        url("./fonts/The\ Rolling\ Stone.ttf") format(opentype),
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+    outline: none;
+    box-sizing: border-box;
+    font-family: "The Rolling Stone";
+}
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    background-color: rgb(178, 6, 212);
+    color: yellow;
+    line-height: 1;
+    padding: 1.5vw;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+}
+
+header h1 {
+    font-size: 6vh;
+}
+
+header p {
+    font-size: 3vh;
+    align-self: center;
+    margin-left: .75rem;
+}
+
+main {
+    flex: 1;
+}
+
+/* Pied de page */
+.footer {
+    background-color: rgb(178, 6, 212);
+    padding: 1.5vw 0;
+}
+
+.footer-copyright {
+    font-size: 2.5vh;
+    text-align: center;
+    color: yellow;
+}
